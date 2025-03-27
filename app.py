@@ -80,7 +80,7 @@ if st.session_state.get("generate_itinerary", False):
     with st.chat_message("assistant"):
         with st.spinner("📝 Generating your personalized itinerary..."):
             search_agent = initialize_agent(tools=tools, llm=search_llm, agent=AgentType.ZERO_SHOT_REACT_DESCRIPTION, handling_parsing_errors=True)
-            web_context = search_agent.invoke(input=f"Fetch details on cheap and expensive hotels (prices, ratings, amenities) and top tourist attractions for a given destination. Given destination: {destination}", verbose=True)
+            web_context = search_agent.invoke(input=f"Find tourist spots and hotels for a tourist in {destination}", verbose=True)
             print(web_context)
             itinerary = itinerary_generation_chain.invoke(
                 {
